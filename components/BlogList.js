@@ -11,8 +11,8 @@ class BlogList extends React.Component {
 
   render() {
     const { data } = this.state;
-    const items = data.map((el, key) => (
-      <BlogItem key={key} text={el.text} image={el.image} />
+    const items = data.map((post) => (
+      <BlogItem key={post.id} post={post} />
     ));
 
     return <article>{items}</article>;
