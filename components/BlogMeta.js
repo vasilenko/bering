@@ -8,7 +8,9 @@ const BlogMeta = ({ author, createdAt, updatedAt, likeCount }) => (
   <ul>
     <li>Author: {author}</li>
     <li>Created at: <Time datetime={createdAt} /></li>
-    <li>Updated at: <Time datetime={updatedAt} /></li>
+    {updatedAt &&
+      <li>Updated at: <Time datetime={updatedAt} /></li>
+    }
     <li>Likes: <Like count={likeCount} /></li>
   </ul>
 );
