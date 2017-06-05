@@ -12,6 +12,11 @@ const posts = [
       width: 400,
       height: 200,
       alt: 'Post 1'
+    },
+    meta: {
+      author: 'User 1',
+      createdAt: '2017-06-02T07:23:32.820520Z',
+      updatedAt: '2017-06-02T07:23:32.820520Z'
     }
   },
   {
@@ -22,6 +27,11 @@ const posts = [
       width: 400,
       height: 200,
       alt: 'Post 2'
+    },
+    meta: {
+      author: 'User 1',
+      createdAt: '2017-06-02T07:23:32.820520Z',
+      updatedAt: '2017-06-02T07:23:32.820520Z'
     }
   },
   {
@@ -32,6 +42,11 @@ const posts = [
       width: 400,
       height: 200,
       alt: 'Post 3'
+    },
+    meta: {
+      author: 'User 1',
+      createdAt: '2017-06-02T07:23:32.820520Z',
+      updatedAt: '2017-06-02T07:23:32.820520Z'
     }
   }
 ];
