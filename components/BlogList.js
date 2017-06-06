@@ -1,21 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import BlogItem from './BlogItem';
 
 class BlogList extends React.Component {
+  static propTypes = {
+    posts: PropTypes.arrayOf(BlogItem.propTypes.post)
+  }
+
   constructor(props) {
     super(props);
 
-    this.state = { data: props.data };
+    this.state = { posts: props.posts };
   }
 
   render() {
-    const { data } = this.state;
-    const items = data.map((post) => (
-      <BlogItem key={post.id} post={post} />
+    const { posts } = this.state;
+    const items = posts.map((post) => (
+      <li key={post.id}>
+        <BlogItem post={post} />
+      </li>
     ));
 
-    return <article>{items}</article>;
+    return <ul>{items}</ul>;
   }
 }
 
