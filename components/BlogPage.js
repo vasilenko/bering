@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BlogList from './BlogList';
+import PieChart from './PieChart';
 
 const posts = [
   {
@@ -73,13 +74,19 @@ class BlogPage extends React.Component {
       };
     });
 
-
     this.setState({ posts: updatedPosts });
   }
 
   render() {
     const { posts } = this.state;
-    return <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount}/>;
+    const pieChartData = posts.map((post) => [post.text, post.meta.likeCount || 0]);
+
+    return (
+      <div>
+        <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
+        <PieChart data={pieChartData} />
+      </div>
+    );
   }
 }
 
