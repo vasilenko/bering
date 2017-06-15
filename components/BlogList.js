@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import BlogItem from './BlogItem';
 
-const BlogList = ({ posts }) => {
+const BlogList = ({ posts, incrementLikeCount }) => {
     const items = posts.map((post) => (
       <li key={post.id}>
-        <BlogItem post={post} />
+        <BlogItem post={post} incrementLikeCount={incrementLikeCount} />
       </li>
     ));
 

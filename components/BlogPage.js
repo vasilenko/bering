@@ -30,7 +30,8 @@ const posts = [
     meta: {
       author: 'User 1',
       createdAt: '2017-06-02T07:23:32.820520Z',
-      updatedAt: '2017-06-02T07:23:32.820520Z'
+      updatedAt: '2017-06-02T07:23:32.820520Z',
+      likeCount: 100
     }
   },
   {
@@ -45,6 +46,8 @@ const posts = [
     meta: {
       author: 'User 1',
       createdAt: '2017-06-02T07:23:32.820520Z'
+      updatedAt: '2017-06-02T07:23:32.820520Z',
+      likeCount: 50
     }
   }
 ];
@@ -54,11 +57,29 @@ class BlogPage extends React.Component {
     super(props);
 
     this.state = { posts };
+    this.incrementLikeCount = this.incrementLikeCount.bind(this);
+  }
+
+  incrementLikeCount(id) {
+    const { posts } = this.state;
+    const updatedPosts = posts.map((post) => {
+      if (post.id != id) {
+        return post;
+      }
+
+      return {
+        ...post,
+        meta: { ...post.meta, likeCount: (post.meta.likeCount || 0) + 1 }
+      };
+    });
+
+
+    this.setState({ posts: updatedPosts });
   }
 
   render() {
     const { posts } = this.state;
-    return <BlogList posts={posts}/>;
+    return <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount}/>;
   }
 }
 
