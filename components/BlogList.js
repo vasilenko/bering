@@ -3,27 +3,18 @@ import PropTypes from 'prop-types';
 
 import BlogItem from './BlogItem';
 
-class BlogList extends React.Component {
-  static propTypes = {
-    posts: PropTypes.arrayOf(BlogItem.propTypes.post)
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = { posts: props.posts };
-  }
-
-  render() {
-    const { posts } = this.state;
+const BlogList = ({ posts, incrementLikeCount }) => {
     const items = posts.map((post) => (
       <li key={post.id}>
-        <BlogItem post={post} />
+        <BlogItem post={post} incrementLikeCount={incrementLikeCount} />
       </li>
     ));
 
     return <ul>{items}</ul>;
-  }
+};
+
+BlogList.propTypes = {
+  posts: PropTypes.arrayOf(BlogItem.propTypes.post)
 }
 
 export default BlogList;

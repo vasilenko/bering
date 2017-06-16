@@ -1,29 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Like extends React.Component {
-  static propTypes = { count: PropTypes.number };
-  static defaultProps = { count: 0 };
+const Like = ({ count, increment }) => (
+  <span>
+    {count}
+    <button onClick={increment}>Like!</button>
+  </span>
+);
 
-  constructor(props) {
-    super(props);
+Like.propTypes = {
+  count: PropTypes.number,
+  increment: PropTypes.func
+};
 
-    this.state = { count: props.count };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  render() {
-    return (
-      <span>
-        {this.state.count}
-        <button onClick={this.handleClick}>Like!</button>
-      </span>
-    );
-  }
-}
+Like.defaultProps = { count: 0 };
 
 export default Like;
