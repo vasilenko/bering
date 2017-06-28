@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/vasilenko/bering/issues"
   },
-  "homepage": "https://github.com/vasilenko/bering#readme"
+  "homepage": "https://github.com/vasilenko/bering#readme",
+  "dependencies": {
+    "c3": "^0.4.14",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
 }
