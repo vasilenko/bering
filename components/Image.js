@@ -10,6 +10,6 @@ Image.propTypes = {
   alt: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number
-}
+};
 
 export default Image;

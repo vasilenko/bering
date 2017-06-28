@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import c3 from 'c3';
 
 import PropTypes from 'prop-types';
 
 class PieChart extends React.Component {
-  static propTypes = { data: PropTypes.array }
+  static propTypes = { data: PropTypes.array };
 
   componentDidMount() {
     this.chart = c3.generate(

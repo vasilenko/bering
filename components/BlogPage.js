@@ -46,7 +46,7 @@ const posts = [
     },
     meta: {
       author: 'User 1',
-      createdAt: '2017-06-02T07:23:32.820520Z'
+      createdAt: '2017-06-02T07:23:32.820520Z',
       updatedAt: '2017-06-02T07:23:32.820520Z',
       likeCount: 50
     }
