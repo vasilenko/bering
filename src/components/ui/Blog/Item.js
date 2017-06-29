@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Image from './Image';
-import TextBox from './TextBox';
-import BlogMeta from './BlogMeta';
+import BlogMeta from './Meta';
+import Image from 'components/ui/Image';
+import TextBox from 'components/ui/TextBox';
 
 const BlogItem = ({ post, incrementLikeCount }) => (
   <div>

@@ -5,7 +5,7 @@ import c3 from 'c3';
 
 import PropTypes from 'prop-types';
 
-class PieChart extends React.Component {
+class BlogPieChart extends React.Component {
   static propTypes = { data: PropTypes.array };
 
   componentDidMount() {
@@ -33,4 +33,4 @@ class PieChart extends React.Component {
   }
 }
 
-export default PieChart;
+export default BlogPieChart;

@@ -1,9 +1,4 @@
-import React from 'react';
-
-import BlogList from './BlogList';
-import PieChart from './PieChart';
-
-const posts = [
+export const posts = [
   {
     id: '3161d55a-5b99-490a-bd53-402ef075338e',
     text: 'Post 1',
@@ -52,43 +47,3 @@ const posts = [
     }
   }
 ];
-
-class BlogPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { posts };
-    this.incrementLikeCount = this.incrementLikeCount.bind(this);
-  }
-
-  incrementLikeCount(id) {
-    const { posts } = this.state;
-    const updatedPosts = posts.map((post) => {
-      if (post.id != id) {
-        return post;
-      }
-
-      return {
-        ...post,
-        meta: { ...post.meta, likeCount: (post.meta.likeCount || 0) + 1 }
-      };
-    });
-
-    this.setState({ posts: updatedPosts });
-  }
-
-  render() {
-    const { posts } = this.state;
-    const pieChartData = posts.map((post) => [post.text, post.meta.likeCount || 0]);
-
-    return (
-      <div>
-        <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
-        <PieChart data={pieChartData} />
-      </div>
-    );
-  }
-}
-
-export default BlogPage;
-

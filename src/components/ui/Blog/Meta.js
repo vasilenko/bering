@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Time from './Time';
-import Like from './Like';
+import Time from 'components/ui/Time';
+import Like from 'components/ui/Like';
 
 const BlogMeta = ({ author, createdAt, updatedAt, likeCount, incrementLikeCount }) => (
   <ul>
