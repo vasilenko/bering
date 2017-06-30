@@ -5,12 +5,22 @@ import BlogMeta from './Meta';
 import Image from 'components/ui/Image';
 import TextBox from 'components/ui/TextBox';
 
+import { Item } from 'semantic-ui-react';
+
 const BlogItem = ({ post, incrementLikeCount }) => (
-  <div>
-    <Image {...post.image} />
-    <TextBox>{post.text}</TextBox>
-    <BlogMeta {...Object.assign(post.meta, { incrementLikeCount: () => incrementLikeCount(post.id) })} />
-  </div>
+  <Item>
+    <Item.Image size="medium">
+      <Image {...post.image} />
+    </Item.Image>
+    <Item.Content>
+      <Item.Description>
+        <TextBox>{post.text}</TextBox>
+      </Item.Description>
+      <Item.Extra>
+        <BlogMeta {...Object.assign(post.meta, { incrementLikeCount: () => incrementLikeCount(post.id) })} />
+      </Item.Extra>
+    </Item.Content>
+  </Item>
 );
 
 BlogItem.propTypes = {

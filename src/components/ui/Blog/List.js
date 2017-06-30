@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Item } from 'semantic-ui-react';
+
 import BlogItem from './Item';
 
 const BlogList = ({ posts, incrementLikeCount }) => {
   const items = posts.map((post) => (
-    <li key={post.id}>
-      <BlogItem post={post} incrementLikeCount={incrementLikeCount} />
-    </li>
+    <BlogItem
+      key={post.id}
+      post={post}
+      incrementLikeCount={incrementLikeCount}
+    />
   ));
 
-  return <ul>{items}</ul>;
+  return <Item.Group divided>{items}</Item.Group>;
 };
 
 BlogList.propTypes = {

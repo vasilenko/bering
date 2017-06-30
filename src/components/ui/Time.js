@@ -3,7 +3,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 const Time = ({ datetime }) => (
-  <time datetime={moment(datetime).format()}>
+  <time>
     {moment(datetime).calendar()}
   </time>
 );

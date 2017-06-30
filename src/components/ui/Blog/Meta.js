@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 import Time from 'components/ui/Time';
 import Like from 'components/ui/Like';
 
+import { List } from 'semantic-ui-react';
+
 const BlogMeta = ({ author, createdAt, updatedAt, likeCount, incrementLikeCount }) => (
-  <ul>
-    <li>Author: {author}</li>
-    <li>Created at: <Time datetime={createdAt} /></li>
+  <List horizontal>
+    <List.Item>Written by {author}</List.Item>
+    <List.Item>Created at <Time datetime={createdAt} /></List.Item>
     {updatedAt &&
-      <li>Updated at: <Time datetime={updatedAt} /></li>
+      <List.Item>Updated at <Time datetime={updatedAt} /></List.Item>
     }
-    <li>Likes: <Like count={likeCount} increment={incrementLikeCount} /></li>
-  </ul>
+    <List.Item>
+      <Like count={likeCount} increment={incrementLikeCount} />
+    </List.Item>
+  </List>
 );
 
 BlogMeta.propTypes = {
