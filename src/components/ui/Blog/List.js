@@ -18,7 +18,8 @@ const BlogList = ({ posts, incrementLikeCount }) => {
 };
 
 BlogList.propTypes = {
-  posts: PropTypes.arrayOf(BlogItem.propTypes.post)
+  posts: PropTypes.arrayOf(BlogItem.propTypes.post),
+  incrementLikeCount: PropTypes.func
 };
 
 export default BlogList;

@@ -17,7 +17,12 @@ const BlogItem = ({ post, incrementLikeCount }) => (
         <TextBox>{post.text}</TextBox>
       </Item.Description>
       <Item.Extra>
-        <BlogMeta {...Object.assign(post.meta, { incrementLikeCount: () => incrementLikeCount(post.id) })} />
+        <BlogMeta
+          {...Object.assign(
+            post.meta,
+            { incrementLikeCount: () => incrementLikeCount(post.id) }
+          )}
+        />
       </Item.Extra>
     </Item.Content>
   </Item>
@@ -27,9 +32,9 @@ BlogItem.propTypes = {
   post: PropTypes.shape({
     image: PropTypes.shape(Image.propTypes),
     text: PropTypes.string,
-    meta: PropTypes.shape(BlogMeta.propTypes),
-    incrementLikeCount: PropTypes.func
-  })
+    meta: PropTypes.shape(BlogMeta.propTypes)
+  }),
+  incrementLikeCount: PropTypes.func
 };
 
 export default BlogItem;
