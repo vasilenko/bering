@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from 'semantic-ui-react';
+
 const Like = ({ count, increment }) => (
-  <span>
-    {count}
-    <button onClick={increment}>Like!</button>
-  </span>
+  <Button
+    content="Like"
+    icon="heart"
+    label={{ as: 'a', basic: true, content: count }}
+    labelPosition="right"
+    onClick={increment}
+  />
 );
 
 Like.propTypes = {

@@ -5,6 +5,6 @@ const TextBox = ({ children }) => (
   <span>{children}</span>
 );
 
-TextBox.propTypes = { children: PropTypes.string.isRequired }
+TextBox.propTypes = { children: PropTypes.string.isRequired };
 
 export default TextBox;
