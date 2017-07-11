@@ -3,7 +3,7 @@ import React from 'react';
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
-import { Header, Container, Divider } from 'semantic-ui-react';
+import { Container, Divider } from 'semantic-ui-react';
 
 import { posts as staticPosts } from 'constants/static/posts';
 
@@ -39,7 +39,6 @@ class BlogPage extends React.Component {
 
     return (
       <Container>
-        <Header as="h1" size="huge">Oh My Blog!</Header>
         <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
         <Divider />
         <BlogPieChart data={pieChartData} />
