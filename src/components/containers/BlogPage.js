@@ -34,7 +34,7 @@ class BlogPage extends React.Component {
   render() {
     const { posts } = this.state;
     const pieChartData = posts.map((post) =>
-      [post.text, post.meta.likeCount || 0]
+      [post.title, post.meta.likeCount || 0]
     );
 
     return (
