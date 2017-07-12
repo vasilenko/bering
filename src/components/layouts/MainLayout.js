@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Link from 'components/ui/Link';
+
 import { Container, Header as TextHeader, Icon } from 'semantic-ui-react';
 
 const MainLayout = ({ children }) => (
@@ -18,8 +20,10 @@ MainLayout.propTypes = {
 const Header = () => (
   <header style={{ marginTop: '2em', marginBottom: '2em' }}>
     <TextHeader as="h1" size="huge">
-      <Icon name="anchor" />
-      Bering & Aleut
+      <Link to="/">
+        <Icon name="anchor" />
+        Bering & Aleut
+      </Link>
     </TextHeader>
   </header>
 );

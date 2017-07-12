@@ -3,14 +3,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import MainLayout from 'components/layouts/MainLayout';
 import BlogPage from 'components/containers/BlogPage';
-import Empty from 'components/containers/Empty';
+import PostPage from 'components/containers/PostPage';
+import NotFoundPage from 'components/containers/NotFoundPage';
+
+import { postsPath } from 'helpers/routes';
 
 const App = () => (
   <Router>
     <MainLayout>
       <Switch>
         <Route exact path="/" component={BlogPage} />
-        <Route component={Empty}/>
+        <Route exact path={postsPath()} component={PostPage} />
+        <Route component={NotFoundPage}/>
       </Switch>
     </MainLayout>
   </Router>

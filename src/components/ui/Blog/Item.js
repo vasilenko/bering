@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import BlogMeta from './Meta';
 import Image from 'components/ui/Image';
 import TextBox from 'components/ui/TextBox';
+import Link from 'components/ui/Link';
+
+import { postsPath } from 'helpers/routes';
 
 import { Item } from 'semantic-ui-react';
 
@@ -13,7 +16,9 @@ const BlogItem = ({ post, incrementLikeCount }) => (
       <Image {...post.image} />
     </Item.Image>
     <Item.Content>
-      <Item.Header>{post.title}</Item.Header>
+      <Item.Header>
+        <Link to={postsPath(post.id)}>{post.title}</Link>
+      </Item.Header>
       <Item.Description>
         <TextBox>{post.text}</TextBox>
       </Item.Description>
@@ -31,6 +36,7 @@ const BlogItem = ({ post, incrementLikeCount }) => (
 
 BlogItem.propTypes = {
   post: PropTypes.shape({
+    id: PropTypes.num,
     image: PropTypes.shape(Image.propTypes),
     title: PropTypes.string,
     text: PropTypes.string,
