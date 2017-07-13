@@ -8,7 +8,7 @@ import { API_BASE } from 'constants/static/env';
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
-import { Container, Divider } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -53,11 +53,16 @@ class BlogPage extends React.Component {
     );
 
     return (
-      <Container>
-        <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
-        <Divider />
-        <BlogPieChart data={pieChartData} />
-      </Container>
+      <Grid relaxed={true} stackable={true}>
+        <Grid.Row>
+          <Grid.Column width={12}>
+            <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <BlogPieChart data={pieChartData} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
