@@ -1,18 +1,31 @@
 import React from 'react';
 
+import request from 'superagent';
+import { camelizeKeys } from 'humps';
+
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
 import { Container, Divider } from 'semantic-ui-react';
 
-import { posts as staticPosts } from 'constants/static/posts';
-
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts: staticPosts };
+    this.state = { posts: [] };
     this.incrementLikeCount = this.incrementLikeCount.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request
+      .get('http://localhost:4000/posts')
+      .end((err, res) =>
+        this.setState({ posts: camelizeKeys(res.body)['data'] })
+      );
   }
 
   incrementLikeCount(id) {
