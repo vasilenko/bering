@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import request from 'superagent';
 import { camelizeKeys } from 'humps';
 
+import { API_BASE } from 'constants/static/env';
+
 import NotFoundPage from './NotFoundPage';
 import BlogItem from 'components/ui/Blog/Item';
 
@@ -22,7 +24,7 @@ class PostPage extends React.Component {
 
   fetchPost() {
     request
-      .get(`http://localhost:4000/posts/${this.props.match.params.id}`)
+      .get(`${API_BASE}/posts/${this.props.match.params.id}`)
       .end((err, res) =>
         this.setState({ post: camelizeKeys(res.body)['data'] })
       );

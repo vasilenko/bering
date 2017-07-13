@@ -3,6 +3,8 @@ import React from 'react';
 import request from 'superagent';
 import { camelizeKeys } from 'humps';
 
+import { API_BASE } from 'constants/static/env';
+
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
@@ -22,7 +24,7 @@ class BlogPage extends React.Component {
 
   fetchPosts() {
     request
-      .get('http://localhost:4000/posts')
+      .get(`${API_BASE}/posts`)
       .end((err, res) =>
         this.setState({ posts: camelizeKeys(res.body)['data'] })
       );
