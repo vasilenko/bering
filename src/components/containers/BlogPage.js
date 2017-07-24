@@ -1,18 +1,33 @@
 import React from 'react';
 
+import request from 'superagent';
+import { camelizeKeys } from 'humps';
+
+import { API_BASE } from 'constants/static/env';
+
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
-import { Header, Container, Divider } from 'semantic-ui-react';
-
-import { posts as staticPosts } from 'constants/static/posts';
+import { Grid } from 'semantic-ui-react';
 
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts: staticPosts };
+    this.state = { posts: [] };
     this.incrementLikeCount = this.incrementLikeCount.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request
+      .get(`${API_BASE}/posts`)
+      .end((err, res) =>
+        this.setState({ posts: camelizeKeys(res.body)['data'] })
+      );
   }
 
   incrementLikeCount(id) {
@@ -34,16 +49,20 @@ class BlogPage extends React.Component {
   render() {
     const { posts } = this.state;
     const pieChartData = posts.map((post) =>
-      [post.text, post.meta.likeCount || 0]
+      [post.title, post.meta.likeCount || 0]
     );
 
     return (
-      <Container>
-        <Header as="h1" size="huge">Oh My Blog!</Header>
-        <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
-        <Divider />
-        <BlogPieChart data={pieChartData} />
-      </Container>
+      <Grid relaxed={true} stackable={true}>
+        <Grid.Row>
+          <Grid.Column width={12}>
+            <BlogList posts={posts} incrementLikeCount={this.incrementLikeCount} />
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <BlogPieChart data={pieChartData} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
