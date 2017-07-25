@@ -5,7 +5,7 @@ import { Item } from 'semantic-ui-react';
 
 import BlogItem from './Item';
 
-const BlogList = ({ posts, incrementLikeCount }) => {
+const BlogList = ({ posts }) => {
   const items = posts.map((post) => (
     <BlogItem
       key={post.id}
