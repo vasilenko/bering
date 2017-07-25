@@ -10,7 +10,6 @@ const BlogList = ({ posts, incrementLikeCount }) => {
     <BlogItem
       key={post.id}
       post={post}
-      incrementLikeCount={incrementLikeCount}
     />
   ));
 
@@ -18,8 +17,7 @@ const BlogList = ({ posts, incrementLikeCount }) => {
 };
 
 BlogList.propTypes = {
-  posts: PropTypes.arrayOf(BlogItem.propTypes.post),
-  incrementLikeCount: PropTypes.func
+  posts: PropTypes.arrayOf(BlogItem.propTypes.post)
 };
 
 export default BlogList;
