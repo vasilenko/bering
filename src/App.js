@@ -1,20 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPage from 'components/containers/BlogPage';
-import PostPage from 'components/containers/PostPage';
-import NotFoundPage from 'components/containers/NotFoundPage';
+import routes from 'routes';
 
-import { postsPath } from 'helpers/routes';
+const history = createBrowserHistory(Router);
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <MainLayout>
       <Switch>
-        <Route exact path="/" component={BlogPage} />
-        <Route exact path={postsPath()} component={PostPage} />
-        <Route component={NotFoundPage}/>
+        {
+          routes.map((route, idx) => (
+            <Route key={idx} {...route} />
+          ))
+        }
       </Switch>
     </MainLayout>
   </Router>
