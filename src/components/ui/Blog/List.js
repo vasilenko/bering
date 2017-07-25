@@ -5,11 +5,12 @@ import { Item } from 'semantic-ui-react';
 
 import BlogItem from './Item';
 
-const BlogList = ({ posts }) => {
+const BlogList = ({ posts, incrementLikeCount }) => {
   const items = posts.map((post) => (
     <BlogItem
       key={post.id}
       post={post}
+      incrementLikeCount={incrementLikeCount}
     />
   ));
 
@@ -17,7 +18,8 @@ const BlogList = ({ posts }) => {
 };
 
 BlogList.propTypes = {
-  posts: PropTypes.arrayOf(BlogItem.propTypes.post)
+  posts: PropTypes.arrayOf(BlogItem.propTypes.post),
+  incrementLikeCount: PropTypes.func
 };
 
 export default BlogList;

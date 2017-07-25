@@ -8,12 +8,9 @@ import Link from 'components/ui/Link';
 
 import { postsPath } from 'helpers/routes';
 
-import store from 'store';
-import { likePost } from 'actions/Post';
-
 import { Item } from 'semantic-ui-react';
 
-const BlogItem = ({ post }) => (
+const BlogItem = ({ post, incrementLikeCount }) => (
   <Item>
     <Item.Image size="medium">
       <Image {...post.image} />
@@ -29,7 +26,7 @@ const BlogItem = ({ post }) => (
         <BlogMeta
           {...Object.assign(
             post.meta,
-            { incrementLikeCount: () => likePost(post.id)(store.dispatch) }
+            { incrementLikeCount: () => incrementLikeCount(post.id) }
           )}
         />
       </Item.Extra>
@@ -44,7 +41,8 @@ BlogItem.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
     meta: PropTypes.shape(BlogMeta.propTypes)
-  })
+  }),
+  incrementLikeCount: PropTypes.func
 };
 
 export default BlogItem;

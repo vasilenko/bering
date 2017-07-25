@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
+import { likePost } from 'actions/Post';
+
 import { Grid } from 'semantic-ui-react';
 
 const stateToBlogListProps = (state) => ({
@@ -12,13 +14,17 @@ const stateToBlogListProps = (state) => ({
   error: state.posts.error
 });
 
+const dispatchToBlogListProps = (dispatch) => ({
+  incrementLikeCount: (id) => dispatch(likePost(id))
+});
+
 const stateToPieChartProps = (state) => ({
   data: state.posts.entries.map((post) =>
     [post.title, post.meta.likeCount || 0]
   )
 });
 
-const WrappedBlogList = connect(stateToBlogListProps)(BlogList);
+const WrappedBlogList = connect(stateToBlogListProps, dispatchToBlogListProps)(BlogList);
 const WrappedPieChart = connect(stateToPieChartProps)(BlogPieChart);
 
 const BlogPage = () => (

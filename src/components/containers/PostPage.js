@@ -5,15 +5,26 @@ import { connect } from 'react-redux';
 import NotFoundPage from './NotFoundPage';
 import BlogItem from 'components/ui/Blog/Item';
 
+import { likePost } from 'actions/Post';
+
 import { Item, Dimmer, Loader } from 'semantic-ui-react';
 
-const stateToProps = (state) => ({
-  post: state.post.entry,
+const stateToPostPageProps = (state) => ({
   isFetching: state.post.isFetching,
   error: state.post.error
 });
 
-const PostPage = ({ post, isFetching, error }) => {
+const stateToBlogItemProps = (state) => ({
+  post: state.post.entry
+});
+
+const dispatchToBlogItemProps = (dispatch) => ({
+  incrementLikeCount: (id) => dispatch(likePost(id))
+});
+
+const WrappedBlogItem = connect(stateToBlogItemProps, dispatchToBlogItemProps)(BlogItem);
+
+const PostPage = ({ isFetching, error }) => {
   if (error) {
     return <NotFoundPage />;
   }
@@ -28,15 +39,14 @@ const PostPage = ({ post, isFetching, error }) => {
 
   return (
     <Item.Group>
-      <BlogItem post={post} />
+      <WrappedBlogItem />
     </Item.Group>
   );
 };
 
 PostPage.propTypes = {
-  post: BlogItem.propTypes.post,
   isFetching: PropTypes.bool,
   error: PropTypes.bool
 };
 
-export default connect(stateToProps)(PostPage);
+export default connect(stateToPostPageProps)(PostPage);

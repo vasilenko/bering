@@ -46,7 +46,7 @@ const errorLike = (id) => ({
 
 export function likePost(id) {
   return (dispatch) => {
-    dispatch(requestLike());
+    dispatch(requestLike(id));
 
     request
       .post(`${API_BASE}/posts/${id}/like`)
