@@ -1,52 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import request from 'superagent';
-import { camelizeKeys } from 'humps';
-
-import { API_BASE } from 'constants/static/env';
+import { connect } from 'react-redux';
 
 import NotFoundPage from './NotFoundPage';
 import BlogItem from 'components/ui/Blog/Item';
 
-import { Item } from 'semantic-ui-react';
+import { Item, Dimmer, Loader } from 'semantic-ui-react';
 
-class PostPage extends React.Component {
-  constructor(props) {
-    super(props);
+const stateToProps = (state) => ({
+  post: state.post.entry,
+  isFetching: state.post.isFetching,
+  error: state.post.error
+});
 
-    this.state = { post: null };
+const PostPage = ({ post, isFetching, error }) => {
+  if (error) {
+    return <NotFoundPage />;
   }
 
-  componentDidMount() {
-    this.fetchPost();
-  }
-
-  fetchPost() {
-    request
-      .get(`${API_BASE}/posts/${this.props.match.params.id}`)
-      .end((err, res) =>
-        this.setState({ post: camelizeKeys(res.body)['data'] })
-      );
-  }
-
-  render() {
-    const { post } = this.state;
-
-    if (!post) {
-      return <NotFoundPage />;
-    }
-
+  if (isFetching) {
     return (
-      <Item.Group>
-        <BlogItem post={post} />
-      </Item.Group>
+      <Dimmer active inverted>
+        <Loader inverted>Loading</Loader>
+      </Dimmer>
     );
   }
-}
 
-PostPage.propTypes = {
-  match: PropTypes.object.isRequired
+  return (
+    <Item.Group>
+      <BlogItem post={post} />
+    </Item.Group>
+  );
 };
 
-export default PostPage;
+PostPage.propTypes = {
+  post: BlogItem.propTypes.post,
+  isFetching: PropTypes.bool,
+  error: PropTypes.bool
+};
+
+export default connect(stateToProps)(PostPage);
