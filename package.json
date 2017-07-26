@@ -19,6 +19,7 @@
   "dependencies": {
     "c3": "^0.4.14",
     "humps": "^2.0.1",
+    "immutability-helper": "^2.3.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
