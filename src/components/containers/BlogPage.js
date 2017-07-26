@@ -1,43 +1,48 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'components/ui/Blog/PieChart';
 
-import { likePost } from 'actions/Post';
+import { Grid, Dimmer, Loader } from 'semantic-ui-react';
 
-import { Grid } from 'semantic-ui-react';
+const BlogPage = ({ isFetching, error, posts, incrementLikeCount }) => {
+  if (error) {
+    return <NotFoundPage />;
+  }
 
-const stateToBlogListProps = (state) => ({
-  posts: state.posts.entries,
-  isFetching: state.posts.isFetching,
-  error: state.posts.error
-});
+  if (isFetching) {
+    return (
+      <Dimmer active inverted>
+        <Loader inverted>Loading</Loader>
+      </Dimmer>
+    );
+  }
 
-const dispatchToBlogListProps = (dispatch) => ({
-  incrementLikeCount: (id) => dispatch(likePost(id))
-});
-
-const stateToPieChartProps = (state) => ({
-  data: state.posts.entries.map((post) =>
+  const chartData = posts.map((post) =>
     [post.title, post.meta.likeCount || 0]
-  )
-});
+  );
 
-const WrappedBlogList = connect(stateToBlogListProps, dispatchToBlogListProps)(BlogList);
-const WrappedPieChart = connect(stateToPieChartProps)(BlogPieChart);
+  return (
+    <Grid relaxed={true} stackable={true}>
+      <Grid.Row>
+        <Grid.Column width={12}>
+          <BlogList posts={posts} incrementLikeCount={incrementLikeCount}/>
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <BlogPieChart data={chartData} />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  );
+};
 
-const BlogPage = () => (
-  <Grid relaxed={true} stackable={true}>
-    <Grid.Row>
-      <Grid.Column width={12}>
-        <WrappedBlogList />
-      </Grid.Column>
-      <Grid.Column width={4}>
-        <WrappedPieChart />
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
-);
+BlogPage.propTypes = {
+  isFetching: PropTypes.bool,
+  error: PropTypes.bool,
+  posts: BlogList.propTypes.posts,
+  incrementLikeCount: BlogList.propTypes.incrementLikeCount,
+  chartData: BlogPieChart.propTypes.data
+};
 
 export default BlogPage;

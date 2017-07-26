@@ -1,30 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import NotFoundPage from './NotFoundPage';
 import BlogItem from 'components/ui/Blog/Item';
 
-import { likePost } from 'actions/Post';
-
 import { Item, Dimmer, Loader } from 'semantic-ui-react';
 
-const stateToPostPageProps = (state) => ({
-  isFetching: state.post.isFetching,
-  error: state.post.error
-});
-
-const stateToBlogItemProps = (state) => ({
-  post: state.post.entry
-});
-
-const dispatchToBlogItemProps = (dispatch) => ({
-  incrementLikeCount: (id) => dispatch(likePost(id))
-});
-
-const WrappedBlogItem = connect(stateToBlogItemProps, dispatchToBlogItemProps)(BlogItem);
-
-const PostPage = ({ isFetching, error }) => {
+const PostPage = ({ isFetching, error, post, incrementLikeCount }) => {
   if (error) {
     return <NotFoundPage />;
   }
@@ -39,14 +21,16 @@ const PostPage = ({ isFetching, error }) => {
 
   return (
     <Item.Group>
-      <WrappedBlogItem />
+      <BlogItem post={post} incrementLikeCount={incrementLikeCount} />
     </Item.Group>
   );
 };
 
 PostPage.propTypes = {
   isFetching: PropTypes.bool,
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  post: BlogItem.propTypes.post,
+  incrementLikeCount: BlogItem.propTypes.incrementLikeCount
 };
 
-export default connect(stateToPostPageProps)(PostPage);
+export default PostPage;
