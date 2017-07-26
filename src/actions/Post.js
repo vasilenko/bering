@@ -31,3 +31,28 @@ export function fetchPost(id) {
       );
   };
 }
+
+const requestPostList = () => ({
+  type: types.FETCH_POST_LIST_REQUEST
+});
+
+const errorPostList = () => ({
+  type: types.FETCH_POST_LIST_ERROR
+});
+
+const receivePostList = (response) => ({
+  type: types.FETCH_POST_LIST_SUCCESS,
+  data: camelizeKeys(response.body)['data']
+});
+
+export function fetchPostList() {
+  return (dispatch) => {
+    dispatch(requestPostList());
+
+    request
+      .get(`${API_BASE}/posts`)
+      .end((error, response) =>
+        error ? dispatch(errorPostList()) : dispatch(receivePostList(response))
+      );
+  };
+}

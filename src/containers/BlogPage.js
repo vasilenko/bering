@@ -2,16 +2,10 @@ import { connect } from 'react-redux';
 
 import BlogPage from 'components/BlogPage';
 
-// import { likePost } from 'actions/Post';
-
 const stateToProps = (state) => ({
-  posts: state.posts.entries,
-  isFetching: state.posts.isFetching,
-  error: state.posts.error
+  isFetching: state.post.isFetching,
+  error: state.post.error,
+  posts: state.post.entries
 });
 
-const dispatchToProps = (dispatch) => ({
-  // incrementLikeCount: (id) => dispatch(likePost(id))
-});
-
-export default connect(stateToProps, dispatchToProps)(BlogPage);
+export default connect(stateToProps)(BlogPage);

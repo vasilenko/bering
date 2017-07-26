@@ -4,15 +4,14 @@ import BlogPage from 'containers/BlogPage';
 import PostPage from 'containers/PostPage';
 import NotFoundPage from 'components/NotFoundPage';
 
-import { fetchPosts } from 'actions/Posts';
-import { fetchPost } from 'actions/Post';
+import { fetchPostList, fetchPost } from 'actions/Post';
 
 const BlogPageRoute = {
   exact: true,
   path: '/',
   component: BlogPage,
   prepareData: (store) => {
-    store.dispatch(fetchPosts());
+    store.dispatch(fetchPostList());
   }
 };
 
