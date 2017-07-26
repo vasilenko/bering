@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Router, Switch, Route, matchPath } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'react-redux';
 
 import MainLayout from 'components/layouts/MainLayout';
@@ -11,6 +10,7 @@ import DevTools from 'components/containers/DevTools';
 import routes from 'routes';
 
 import store from 'store';
+import history from 'helpers/history';
 import prepareData from 'helpers/prepareData';
 
 const onChangeLocation = (location) => {
@@ -31,8 +31,6 @@ const onChangeLocation = (location) => {
 };
 
 onChangeLocation(window.location);
-
-const history = createBrowserHistory(Router);
 history.listen(onChangeLocation);
 
 const App = () => (
