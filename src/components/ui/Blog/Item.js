@@ -10,7 +10,7 @@ import { postsPath } from 'helpers/routes';
 
 import { Item } from 'semantic-ui-react';
 
-const BlogItem = ({ post, incrementLikeCount }) => (
+const BlogItem = ({ post }) => (
   <Item>
     <Item.Image size="medium">
       <Image {...post.image} />
@@ -24,10 +24,7 @@ const BlogItem = ({ post, incrementLikeCount }) => (
       </Item.Description>
       <Item.Extra>
         <BlogMeta
-          {...Object.assign(
-            post.meta,
-            { incrementLikeCount: () => incrementLikeCount(post.id) }
-          )}
+          {...Object.assign(post.meta, { postId: post.id })}
         />
       </Item.Extra>
     </Item.Content>

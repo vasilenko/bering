@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import PostPage from 'components/PostPage';
 
-import { likePost } from 'actions/Post';
+// import { likePost } from 'actions/Post';
 
 const stateToProps = (state) => ({
   isFetching: state.post.isFetching,
@@ -11,7 +11,7 @@ const stateToProps = (state) => ({
 });
 
 const dispatchToProps = (dispatch) => ({
-  incrementLikeCount: (id) => dispatch(likePost(id))
+  // incrementLikeCount: (id) => dispatch(likePost(id))
 });
 
 export default connect(stateToProps, dispatchToProps)(PostPage);

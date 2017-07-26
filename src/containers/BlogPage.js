@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import BlogPage from 'components/BlogPage';
 
-import { likePost } from 'actions/Post';
+// import { likePost } from 'actions/Post';
 
 const stateToProps = (state) => ({
   posts: state.posts.entries,
@@ -11,7 +11,7 @@ const stateToProps = (state) => ({
 });
 
 const dispatchToProps = (dispatch) => ({
-  incrementLikeCount: (id) => dispatch(likePost(id))
+  // incrementLikeCount: (id) => dispatch(likePost(id))
 });
 
 export default connect(stateToProps, dispatchToProps)(BlogPage);
