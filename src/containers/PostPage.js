@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import PostPage from 'components/containers/PostPage';
+import PostPage from 'components/PostPage';
 
 import { likePost } from 'actions/Post';
 

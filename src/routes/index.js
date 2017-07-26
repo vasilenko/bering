@@ -2,7 +2,7 @@ import { postsPath } from 'helpers/routes';
 
 import BlogPage from 'containers/BlogPage';
 import PostPage from 'containers/PostPage';
-import NotFoundPage from 'components/containers/NotFoundPage';
+import NotFoundPage from 'components/NotFoundPage';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';

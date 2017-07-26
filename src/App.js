@@ -5,7 +5,7 @@ import { Router, Switch, Route, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import MainLayout from 'components/layouts/MainLayout';
-import DevTools from 'components/containers/DevTools';
+import DevTools from 'components/DevTools';
 
 import routes from 'routes';
 

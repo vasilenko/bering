@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import BlogPage from 'components/containers/BlogPage';
+import BlogPage from 'components/BlogPage';
 
 import { likePost } from 'actions/Post';
 
