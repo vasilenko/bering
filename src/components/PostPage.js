@@ -6,7 +6,7 @@ import BlogItem from 'components/ui/Blog/Item';
 
 import { Item, Dimmer, Loader } from 'semantic-ui-react';
 
-const PostPage = ({ isFetching, error, post, incrementLikeCount }) => {
+const PostPage = ({ isFetching, error, post }) => {
   if (error) {
     return <NotFoundPage />;
   }
@@ -21,7 +21,7 @@ const PostPage = ({ isFetching, error, post, incrementLikeCount }) => {
 
   return (
     <Item.Group>
-      <BlogItem post={post} incrementLikeCount={incrementLikeCount} />
+      <BlogItem post={post} />
     </Item.Group>
   );
 };
@@ -29,8 +29,7 @@ const PostPage = ({ isFetching, error, post, incrementLikeCount }) => {
 PostPage.propTypes = {
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
-  post: BlogItem.propTypes.post,
-  incrementLikeCount: BlogItem.propTypes.incrementLikeCount
+  post: BlogItem.propTypes.post
 };
 
 export default PostPage;

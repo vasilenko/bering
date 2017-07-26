@@ -38,8 +38,7 @@ BlogItem.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
     meta: PropTypes.shape(BlogMeta.propTypes)
-  }),
-  incrementLikeCount: PropTypes.func
+  })
 };
 
 export default BlogItem;

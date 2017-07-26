@@ -6,7 +6,7 @@ import BlogPieChart from 'components/ui/Blog/PieChart';
 
 import { Grid, Dimmer, Loader } from 'semantic-ui-react';
 
-const BlogPage = ({ isFetching, error, posts, incrementLikeCount }) => {
+const BlogPage = ({ isFetching, error, posts }) => {
   if (error) {
     return <NotFoundPage />;
   }
@@ -27,7 +27,7 @@ const BlogPage = ({ isFetching, error, posts, incrementLikeCount }) => {
     <Grid relaxed={true} stackable={true}>
       <Grid.Row>
         <Grid.Column width={12}>
-          <BlogList posts={posts} incrementLikeCount={incrementLikeCount}/>
+          <BlogList posts={posts} />
         </Grid.Column>
         <Grid.Column width={4}>
           <BlogPieChart data={chartData} />
@@ -40,9 +40,7 @@ const BlogPage = ({ isFetching, error, posts, incrementLikeCount }) => {
 BlogPage.propTypes = {
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
-  posts: BlogList.propTypes.posts,
-  incrementLikeCount: BlogList.propTypes.incrementLikeCount,
-  chartData: BlogPieChart.propTypes.data
+  posts: BlogList.propTypes.posts
 };
 
 export default BlogPage;
