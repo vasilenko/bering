@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import BlogList from 'components/ui/Blog/List';
-import BlogPieChart from 'components/ui/Blog/PieChart';
+import BlogPieChart from 'containers/BlogPieChart';
 
 import { Grid, Dimmer, Loader } from 'semantic-ui-react';
 
@@ -19,10 +19,6 @@ const BlogPage = ({ isFetching, error, posts }) => {
     );
   }
 
-  const chartData = posts.map((post) =>
-    [post.title, post.meta.likeCount || 0]
-  );
-
   return (
     <Grid relaxed={true} stackable={true}>
       <Grid.Row>
@@ -30,7 +26,7 @@ const BlogPage = ({ isFetching, error, posts }) => {
           <BlogList posts={posts} />
         </Grid.Column>
         <Grid.Column width={4}>
-          <BlogPieChart data={chartData} />
+          <BlogPieChart />
         </Grid.Column>
       </Grid.Row>
     </Grid>
