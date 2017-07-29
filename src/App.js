@@ -1,23 +1,57 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+
+import { Router, Switch, Route, matchPath } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPage from 'components/containers/BlogPage';
-import PostPage from 'components/containers/PostPage';
-import NotFoundPage from 'components/containers/NotFoundPage';
+import DevTools from 'components/DevTools';
 
-import { postsPath } from 'helpers/routes';
+import routes from 'routes';
+
+import store from 'store';
+import history from 'helpers/history';
+import prepareData from 'helpers/prepareData';
+
+const onChangeLocation = (location) => {
+  const state = { location, routes: [], params: {} };
+
+  routes.some(route => {
+    const match = matchPath(location.pathname, route);
+
+    if (match) {
+      state.routes.push(route);
+      Object.assign(state.params, match.params);
+    }
+
+    return match;
+  });
+
+  prepareData(store, state);
+};
+
+onChangeLocation(window.location);
+history.listen(onChangeLocation);
 
 const App = () => (
-  <Router>
-    <MainLayout>
-      <Switch>
-        <Route exact path="/" component={BlogPage} />
-        <Route exact path={postsPath()} component={PostPage} />
-        <Route component={NotFoundPage}/>
-      </Switch>
-    </MainLayout>
-  </Router>
+  <Provider store={store}>
+    <Router history={history}>
+      <MainLayout>
+        <Switch>
+          {
+            routes.map((route, idx) => (
+              <Route key={idx} {...route} />
+            ))
+          }
+        </Switch>
+      </MainLayout>
+    </Router>
+  </Provider>
+);
+
+ReactDOM.render(
+  <DevTools store={store} />,
+  document.getElementById('devtools')
 );
 
 export default App;
