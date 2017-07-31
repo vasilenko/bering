@@ -38,7 +38,13 @@ export default (state = initialState, action) => {
       return Object.assign(
         {},
         initialState,
-        { entries: updateLikeCount(state.entries, action.postId, action.count) }
+        {
+          entries: updateLikeCount(
+            state.entries,
+            action.data['id'],
+            action.data['meta']['likeCount']
+          )
+        }
       );
     default:
       return state;
