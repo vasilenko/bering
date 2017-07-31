@@ -15,11 +15,11 @@ export const fetchPost = (id) => ({
   }
 });
 
-export const fetchPostList = () => ({
+export const fetchPostList = (filter) => ({
   [API_CALL]: {
     endpoint: '/posts',
     method: 'GET',
-    query: {},
+    query: { filter },
     types: [
       types.FETCH_POST_LIST_REQUEST,
       types.FETCH_POST_LIST_SUCCESS,
