@@ -2,6 +2,7 @@ import React from 'react';
 
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'containers/BlogPieChart';
+import BlogFilter from 'containers/BlogFilter';
 
 import withLoader from 'components/HOCs/withLoader';
 
@@ -14,6 +15,7 @@ const BlogPage = ({ posts }) => (
         <BlogList posts={posts} />
       </Grid.Column>
       <Grid.Column width={4}>
+        <BlogFilter />
         <BlogPieChart />
       </Grid.Column>
     </Grid.Row>
