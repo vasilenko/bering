@@ -1,5 +1,11 @@
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { Provider } from 'react-redux';
+
 import { URL } from 'url';
-import { matchPath } from 'react-router-dom';
+import { StaticRouter, Switch, Route, matchPath } from 'react-router-dom';
+
+import MainLayout from 'components/layouts/MainLayout';
 
 import store from 'store';
 import routes from 'routes';
@@ -24,7 +30,23 @@ export default (req, res) => {
   Promise.all(prepareData(store, state)).then(() => {
     const initialState = JSON.stringify(store.getState());
 
+    const content = ReactDOMServer.renderToString(
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={{}}>
+          <MainLayout>
+            <Switch>
+              {
+                routes.map((route, idx) => (
+                  <Route key={idx} {...route} />
+                ))
+              }
+            </Switch>
+          </MainLayout>
+        </StaticRouter>
+      </Provider>
+    );
+
     res.status(200);
-    res.render('index', { initialState });
+    res.render('index', { initialState, content });
   });
 };
