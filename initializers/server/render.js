@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { URL } from 'url';
 import { StaticRouter, Switch, Route, matchPath } from 'react-router-dom';
 
+import Helmet from 'react-helmet';
+
 import MainLayout from 'components/layouts/MainLayout';
 
 import createStore from 'store';
@@ -48,7 +50,9 @@ export default (req, res) => {
       </Provider>
     );
 
+    const helmet = Helmet.rewind();
+
     res.status(200);
-    res.render('index', { initialState, content });
+    res.render('index', { initialState, content, helmet });
   });
 };
