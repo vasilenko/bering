@@ -7,10 +7,12 @@ import { StaticRouter, Switch, Route, matchPath } from 'react-router-dom';
 
 import MainLayout from 'components/layouts/MainLayout';
 
-import store from 'store';
+import createStore from 'store';
 import routes from 'routes';
 
 import prepareData from 'helpers/prepareData';
+
+const store = createStore();
 
 export default (req, res) => {
   const location = new URL(`${req.protocol}:\\${req.get('host')}${req.originalUrl}`);
