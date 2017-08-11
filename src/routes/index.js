@@ -10,18 +10,18 @@ const BlogPageRoute = {
   exact: true,
   path: '/',
   component: BlogPage,
-  prepareData: (store) => {
-    store.dispatch(fetchPostList());
-  }
+  prepareData: (store) => (
+    store.dispatch(fetchPostList())
+  )
 };
 
 const PostPageRoute = {
   exact: true,
   path: postsPath(),
   component: PostPage,
-  prepareData: (store, _query, params) => {
-    store.dispatch(fetchPost(params.id));
-  }
+  prepareData: (store, _query, params) => (
+    store.dispatch(fetchPost(params.id))
+  )
 };
 
 const NotFoundPageRoute = {
