@@ -15,6 +15,10 @@ require.extensions['.css'] = () => {
 const express = require('express');
 const application = express();
 
+const morgan = require('morgan');
+const logger = morgan('combined');
+application.use(logger);
+
 application.set('views', path.join(__dirname, 'views'));
 application.set('view engine', 'ejs');
 
