@@ -14,9 +14,9 @@ import routes from 'routes';
 
 import prepareData from 'helpers/prepareData';
 
-const store = createStore();
-
 export default (req, res) => {
+  const store = createStore();
+
   const location = new URL(`${req.protocol}:\\${req.get('host')}${req.originalUrl}`);
   const state = { location, routes: [], params: {} };
 
