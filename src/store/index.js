@@ -5,12 +5,11 @@ import DevTools from 'components/DevTools';
 
 import reducers from 'reducers';
 
-const store = createStore(
+export default (initialState) => createStore(
   reducers,
+  initialState,
   compose(
     applyMiddleware(APIMiddleware),
     DevTools.instrument()
   )
 );
-
-export default store;

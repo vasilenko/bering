@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import c3 from 'c3';
-
 import PropTypes from 'prop-types';
 
 class BlogPieChart extends React.Component {
   static propTypes = { data: PropTypes.array };
 
   componentDidMount() {
+    if (!__CLIENT__) return;
+
+    const c3 = require('c3');
+
     this.chart = c3.generate(
       {
         bindto: ReactDOM.findDOMNode(this.refs.chart),

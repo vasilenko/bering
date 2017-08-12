@@ -1,5 +1,7 @@
 import { postsPath } from 'helpers/routes';
 
+import initialLoad from 'helpers/initialLoad';
+
 import BlogPage from 'containers/BlogPage';
 import PostPage from 'containers/PostPage';
 import NotFoundPage from 'components/NotFoundPage';
@@ -11,7 +13,7 @@ const BlogPageRoute = {
   path: '/',
   component: BlogPage,
   prepareData: (store) => {
-    store.dispatch(fetchPostList());
+    if (!initialLoad()) return store.dispatch(fetchPostList());
   }
 };
 
@@ -20,7 +22,7 @@ const PostPageRoute = {
   path: postsPath(),
   component: PostPage,
   prepareData: (store, _query, params) => {
-    store.dispatch(fetchPost(params.id));
+    if (!initialLoad()) return store.dispatch(fetchPost(params.id));
   }
 };
 

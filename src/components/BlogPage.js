@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Helmet from 'react-helmet';
+
 import BlogList from 'components/ui/Blog/List';
 import BlogPieChart from 'containers/BlogPieChart';
 import BlogFilter from 'containers/BlogFilter';
@@ -19,6 +21,8 @@ const BlogPage = ({ posts }) => (
         <BlogPieChart />
       </Grid.Column>
     </Grid.Row>
+
+    <Helmet title="Bering & Aleut" />
   </Grid>
 );
 
