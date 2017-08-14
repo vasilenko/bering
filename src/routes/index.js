@@ -4,6 +4,7 @@ import initialLoad from 'helpers/initialLoad';
 
 import BlogPage from 'containers/BlogPage';
 import PostPage from 'containers/PostPage';
+import AboutPage from 'components/AboutPage';
 import NotFoundPage from 'components/NotFoundPage';
 
 import { fetchPostList, fetchPost } from 'actions/Post';
@@ -26,6 +27,12 @@ const PostPageRoute = {
   }
 };
 
+const AboutPageRoute = {
+  exact: true,
+  path: '/about',
+  component: AboutPage
+};
+
 const NotFoundPageRoute = {
   component: NotFoundPage
 };
@@ -33,5 +40,6 @@ const NotFoundPageRoute = {
 export default [
   BlogPageRoute,
   PostPageRoute,
+  AboutPageRoute,
   NotFoundPageRoute
 ];

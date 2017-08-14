@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 import Link from 'components/ui/Link';
 
-import { Container, Header as TextHeader, Icon } from 'semantic-ui-react';
+import { Container, Header as TextHeader, Icon, Menu } from 'semantic-ui-react';
 
 const MainLayout = ({ children }) => (
   <Container>
     <Header />
+    <Nav />
     {children}
     <Footer />
   </Container>
@@ -26,6 +27,17 @@ const Header = () => (
       </Link>
     </TextHeader>
   </header>
+);
+
+const Nav = () => (
+  <Menu secondary>
+    <Menu.Item>
+      <Link to="/">Blog</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link to="/about">About</Link>
+    </Menu.Item>
+  </Menu>
 );
 
 const Footer = () => (
