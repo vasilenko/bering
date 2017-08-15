@@ -4,6 +4,7 @@ import initialLoad from 'helpers/initialLoad';
 
 import BlogPage from 'containers/BlogPage';
 import PostPage from 'containers/PostPage';
+import EditPostPage from 'containers/EditPostPage';
 import AboutPage from 'components/AboutPage';
 import NotFoundPage from 'components/NotFoundPage';
 
@@ -27,6 +28,15 @@ const PostPageRoute = {
   }
 };
 
+const EditPostPageRoute = {
+  exact: true,
+  path: '/posts/:id/edit',
+  component: EditPostPage,
+  prepareData: (store, _query, params) => {
+    if (!initialLoad()) return store.dispatch(fetchPost(params.id));
+  }
+};
+
 const AboutPageRoute = {
   exact: true,
   path: '/about',
@@ -40,6 +50,7 @@ const NotFoundPageRoute = {
 export default [
   BlogPageRoute,
   PostPageRoute,
+  EditPostPageRoute,
   AboutPageRoute,
   NotFoundPageRoute
 ];
