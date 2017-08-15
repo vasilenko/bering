@@ -2,6 +2,8 @@ import React from 'react';
 
 import Helmet from 'react-helmet';
 
+import ContactForm from './ui/Contact/Form';
+
 import { Header } from 'semantic-ui-react';
 
 const AboutPage = () => (
@@ -15,6 +17,10 @@ const AboutPage = () => (
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
+
+
+    <Header>Contact us</Header>
+    <ContactForm />
 
     <Helmet title="About Bering & Aleut" />
   </div>
