@@ -1,5 +1,6 @@
 import React from 'react';
 
+import EditPostForm from 'containers/EditPostForm';
 import BlogItem from 'components/ui/Blog/Item';
 
 import withLoader from 'components/HOCs/withLoader';
@@ -10,7 +11,9 @@ import { Header } from 'semantic-ui-react';
 
 const EditPostPage = ({ post }) => (
   <div>
-    <Header>Edit Post</Header>
+    <Header>Edit Post — {post.title}</Header>
+
+    <EditPostForm post={post} />
 
     <Helmet title="Edit Post" />
   </div>

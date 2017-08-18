@@ -53,11 +53,11 @@ class ContactForm extends React.Component {
           errors: { [fieldName]: { $set: !this.isFieldValid(fieldName, value) } }
         })
       );
-    }
+    };
   }
 
   isFieldValid(fieldName, value) {
-    switch(fieldName) {
+    switch (fieldName) {
       case 'fullName':
         return value.length > 0;
       case 'email':
