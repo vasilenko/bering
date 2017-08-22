@@ -1,4 +1,4 @@
-import { postsPath } from 'helpers/routes';
+import { postPath, editPostPath } from 'helpers/routes';
 
 import initialLoad from 'helpers/initialLoad';
 
@@ -21,7 +21,7 @@ const BlogPageRoute = {
 
 const PostPageRoute = {
   exact: true,
-  path: postsPath(),
+  path: postPath(),
   component: PostPage,
   prepareData: (store, _query, params) => {
     if (!initialLoad()) return store.dispatch(fetchPost(params.id));
@@ -30,7 +30,7 @@ const PostPageRoute = {
 
 const EditPostPageRoute = {
   exact: true,
-  path: '/posts/:id/edit',
+  path: editPostPath(),
   component: EditPostPage,
   prepareData: (store, _query, params) => {
     if (!initialLoad()) return store.dispatch(fetchPost(params.id));
