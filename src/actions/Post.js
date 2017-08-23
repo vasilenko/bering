@@ -28,6 +28,19 @@ export const fetchPostList = (filter) => ({
   }
 });
 
+export const createPost = (values) => ({
+  [API_CALL]: {
+    endpoint: '/posts',
+    method: 'POST',
+    payload: { post: values },
+    types: [
+      types.CREATE_POST_REQUEST,
+      types.CREATE_POST_SUCCESS,
+      types.CREATE_POST_ERROR
+    ]
+  }
+});
+
 export const updatePost = (id, values) => ({
   [API_CALL]: {
     endpoint: `/posts/${id}`,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EditPostForm from 'containers/EditPostForm';
+import PostForm from 'containers/PostForm';
 import BlogItem from 'components/ui/Blog/Item';
 
 import withLoader from 'components/HOCs/withLoader';
@@ -13,7 +13,7 @@ const EditPostPage = ({ post }) => (
   <div>
     <Header>Edit Post — {post.title}</Header>
 
-    <EditPostForm post={post} />
+    <PostForm post={post} />
 
     <Helmet title="Edit Post" />
   </div>

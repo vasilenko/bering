@@ -7,10 +7,10 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Input, TextArea, Label, Button } from 'semantic-ui-react';
 
 const renderField = ({ input, label, meta: { touched, error, warning }, as: As = Input }) => (
-  <Form.Field error={!!error}>
+  <Form.Field error={touched && error}>
     <label>{label}</label>
     <As {...input} />
-    {error && <Label basic color='red' pointing>{error}</Label>}
+    {touched && error && <Label basic color='red' pointing>{error}</Label>}
     {touched && warning && <Label basic color='orange' pointing>{warning}</Label>}
   </Form.Field>
 );

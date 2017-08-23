@@ -35,6 +35,9 @@ const Nav = () => (
       <Link to="/">Blog</Link>
     </Menu.Item>
     <Menu.Item>
+      <Link to="/new">New Post</Link>
+    </Menu.Item>
+    <Menu.Item>
       <Link to="/about">About</Link>
     </Menu.Item>
   </Menu>

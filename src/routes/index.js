@@ -4,6 +4,7 @@ import initialLoad from 'helpers/initialLoad';
 
 import BlogPage from 'containers/BlogPage';
 import PostPage from 'containers/PostPage';
+import NewPostPage from 'components/NewPostPage';
 import EditPostPage from 'containers/EditPostPage';
 import AboutPage from 'components/AboutPage';
 import NotFoundPage from 'components/NotFoundPage';
@@ -28,6 +29,12 @@ const PostPageRoute = {
   }
 };
 
+const NewPostPageRoute = {
+  exact: true,
+  path: '/new',
+  component: NewPostPage
+};
+
 const EditPostPageRoute = {
   exact: true,
   path: editPostPath(),
@@ -50,6 +57,7 @@ const NotFoundPageRoute = {
 export default [
   BlogPageRoute,
   PostPageRoute,
+  NewPostPageRoute,
   EditPostPageRoute,
   AboutPageRoute,
   NotFoundPageRoute
