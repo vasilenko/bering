@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogItem matches snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Item>
+    <ItemImage
+      size="medium"
+    >
+      <Image
+        src="image.png"
+      />
+    </ItemImage>
+    <ItemContent>
+      <ItemHeader>
+        <Link
+          replace={false}
+          to="/posts/0"
+        >
+          Title
+        </Link>
+      </ItemHeader>
+      <ItemDescription>
+        <TextBox>
+          Text
+        </TextBox>
+      </ItemDescription>
+      <ItemExtra>
+        <BlogMeta
+          author="Anonymous"
+          createdAt="9/5/2017, 4:34:58 PM"
+          postId={0}
+        />
+      </ItemExtra>
+    </ItemContent>
+  </Item>,
+  "nodes": Array [
+    <Item>
+      <ItemImage
+        size="medium"
+      >
+        <Image
+          src="image.png"
+        />
+      </ItemImage>
+      <ItemContent>
+        <ItemHeader>
+          <Link
+            replace={false}
+            to="/posts/0"
+          >
+            Title
+          </Link>
+        </ItemHeader>
+        <ItemDescription>
+          <TextBox>
+            Text
+          </TextBox>
+        </ItemDescription>
+        <ItemExtra>
+          <BlogMeta
+            author="Anonymous"
+            createdAt="9/5/2017, 4:34:58 PM"
+            postId={0}
+          />
+        </ItemExtra>
+      </ItemContent>
+    </Item>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <BlogItem
+        post={
+          Object {
+            "id": 0,
+            "image": Object {
+              "src": "image.png",
+            },
+            "meta": Object {
+              "createdAt": "9/5/2017, 4:34:58 PM",
+              "postId": 0,
+            },
+            "text": "Text",
+            "title": "Title",
+          }
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "post": Object {
+            "id": 0,
+            "image": Object {
+              "src": "image.png",
+            },
+            "meta": Object {
+              "createdAt": "9/5/2017, 4:34:58 PM",
+              "postId": 0,
+            },
+            "text": "Text",
+            "title": "Title",
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Item>
+          <ItemImage
+            size="medium"
+          >
+            <Image
+              src="image.png"
+            />
+          </ItemImage>
+          <ItemContent>
+            <ItemHeader>
+              <Link
+                replace={false}
+                to="/posts/0"
+              >
+                Title
+              </Link>
+            </ItemHeader>
+            <ItemDescription>
+              <TextBox>
+                Text
+              </TextBox>
+            </ItemDescription>
+            <ItemExtra>
+              <BlogMeta
+                author="Anonymous"
+                createdAt="9/5/2017, 4:34:58 PM"
+                postId={0}
+              />
+            </ItemExtra>
+          </ItemContent>
+        </Item>,
+        "_debugID": 2,
+        "_renderedOutput": <Item>
+          <ItemImage
+            size="medium"
+          >
+            <Image
+              src="image.png"
+            />
+          </ItemImage>
+          <ItemContent>
+            <ItemHeader>
+              <Link
+                replace={false}
+                to="/posts/0"
+              >
+                Title
+              </Link>
+            </ItemHeader>
+            <ItemDescription>
+              <TextBox>
+                Text
+              </TextBox>
+            </ItemDescription>
+            <ItemExtra>
+              <BlogMeta
+                author="Anonymous"
+                createdAt="9/5/2017, 4:34:58 PM"
+                postId={0}
+              />
+            </ItemExtra>
+          </ItemContent>
+        </Item>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <BlogItem
+    post={
+      Object {
+        "id": 0,
+        "image": Object {
+          "src": "image.png",
+        },
+        "meta": Object {
+          "createdAt": "9/5/2017, 4:34:58 PM",
+          "postId": 0,
+        },
+        "text": "Text",
+        "title": "Title",
+      }
+    }
+  />,
+}
+`;
