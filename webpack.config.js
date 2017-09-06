@@ -53,5 +53,7 @@ export default {
       __DEVELOPMENT_: true
     }),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+
+  devtool: 'eval-source-map'
 };
