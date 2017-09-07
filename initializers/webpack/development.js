@@ -50,7 +50,7 @@ export default {
     new webpack.DefinePlugin({
       __SERVER__: false,
       __CLIENT__: true,
-      __DEVELOPMENT_: true
+      __DEVELOPMENT__: true
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
