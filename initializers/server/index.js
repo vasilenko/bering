@@ -11,7 +11,6 @@ require.extensions['.css'] = () => {
   return;
 };
 
-
 const express = require('express');
 const application = express();
 
@@ -23,7 +22,7 @@ application.set('views', path.join(__dirname, 'views'));
 application.set('view engine', 'ejs');
 
 // Serve static files
-// application.use(express.static('src/static'));
+application.use(express.static('src/static'));
 
 if (__DEVELOPMENT__) {
   const webpack = require('webpack');
