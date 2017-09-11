@@ -7,6 +7,8 @@ import { StaticRouter, Switch, Route, matchPath } from 'react-router-dom';
 
 import Helmet from 'react-helmet';
 
+import webpackAsset from './webpackAsset';
+
 import MainLayout from 'components/layouts/MainLayout';
 
 import createStore from 'store';
@@ -53,6 +55,6 @@ export default (req, res) => {
     const helmet = Helmet.rewind();
 
     res.status(200);
-    res.render('index', { initialState, content, helmet });
+    res.render('index', { initialState, content, helmet, webpackAsset });
   });
 };

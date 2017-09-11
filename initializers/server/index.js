@@ -11,7 +11,6 @@ require.extensions['.css'] = () => {
   return;
 };
 
-
 const express = require('express');
 const application = express();
 
@@ -23,26 +22,28 @@ application.set('views', path.join(__dirname, 'views'));
 application.set('view engine', 'ejs');
 
 // Serve static files
-// application.use(express.static('src/static'));
+application.use(express.static('src/static'));
 
-const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config.js').default;
-const webpackDev = require('webpack-dev-middleware');
-const webpackHot = require('webpack-hot-middleware');
-const webpackCompiler = webpack(webpackConfig);
+if (__DEVELOPMENT__) {
+  const webpack = require('webpack');
+  const webpackConfig = require('../webpack/development.js').default;
+  const webpackDev = require('webpack-dev-middleware');
+  const webpackHot = require('webpack-hot-middleware');
+  const webpackCompiler = webpack(webpackConfig);
 
-application.use(
-  webpackDev(
-    webpackCompiler,
-    {
-      hot: true,
-      publicPath: webpackConfig.output.publicPath,
-      stats: { colors: true }
-    }
-  )
-);
+  application.use(
+    webpackDev(
+      webpackCompiler,
+      {
+        hot: true,
+        publicPath: webpackConfig.output.publicPath,
+        stats: { colors: true }
+      }
+    )
+  );
 
-application.use(webpackHot(webpackCompiler));
+  application.use(webpackHot(webpackCompiler));
+}
 
 application.get('*', require('./render').default);
 
